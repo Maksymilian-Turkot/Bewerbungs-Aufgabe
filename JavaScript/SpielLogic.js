@@ -27,19 +27,20 @@ class Spiel {
                     }
                     Spielfeld.append(neuerKnopf);
                 } 
-            }  
-            // Wechselt den Spieler (X / O)
-            this.spielerWechseln = function() {
-                this.spielerEinsZug = !this.spielerEinsZug;
-            }
+            }     
+        }
+        
+        // Wechselt den Spieler (X / O)
+        this.spielerWechseln = function() {
+            this.spielerEinsZug = !this.spielerEinsZug;
+        }
 
-            // Gibt anhand des Booleans den dazu gehörigen Spieler Object zurück
-            this.jetzigerSpieler = function() {
-                if (this.spielerEinsZug) {
-                    return spieler1
-                } else {
-                    return spieler2
-                }
+        // Gibt anhand des Booleans den dazu gehörigen Spieler Object zurück
+        this.jetzigerSpieler = function() {
+            if (this.spielerEinsZug) {
+                return spieler1
+            } else {
+                return spieler2
             }
         }
     }   
