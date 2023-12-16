@@ -52,7 +52,7 @@ class Spieler {
     }
 }
 
-const debug = false;
+let debug = false;
 const spiel = new Spiel();
 
 const spieler1 = new Spieler("X");
