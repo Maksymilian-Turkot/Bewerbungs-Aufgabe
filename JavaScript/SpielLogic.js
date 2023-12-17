@@ -103,7 +103,7 @@ function spielZuStand() {
         console.log("\t\t Prufung für ",spiel.jetzigerSpieler().zeichen, ":")
     }
 
-    if (zeilenPruefung() || spaltenPruefung() || diagonalPruefung()) {
+    if (reihenPruefung() || spaltenPruefung() || diagonalPruefung()) {
         gewonnen();
         return true
     } else if (spiel.zug == spiel.maxZuge) {
@@ -114,7 +114,7 @@ function spielZuStand() {
     }
 }
 
-function zeilenPruefung() {
+function reihenPruefung() {
     let counter = 0;
     if (debug) {
         console.log("Zeilen überprüfung: \n");
@@ -123,14 +123,18 @@ function zeilenPruefung() {
         counter = 0;
         for(j=0; j < spiel.feldGrosse; j++) {
             if (spiel.Feld[i][j] === spiel.jetzigerSpieler().zeichen) {
-                console.log("\tcounter increased (",counter,")");
                 counter++;
+                if (debug) {
+                    console.log("\tcounter increased ("+counter+")");
+                    }
             } else {
                 counter = 0;
-                console.log("\tcounter reset (",counter,")");
+                if (debug) {
+                    console.log("\tcounter reset ("+counter+")");
+                }
             }
             if (counter >= 3) {
-                console.log("gewonnen");
+                console.log("\t", spiel.jetzigerSpieler().zeichen, " Hat gewonnen.")
                 return true
             }
         }
@@ -152,22 +156,26 @@ function spaltenPruefung() {
     for(i = 0; i < spiel.feldGrosse; i++) {
         counter = 0;
         for(j=0; j < spiel.feldGrosse; j++) {
-            if (spiel.Feld[j][i] === spiel.jetzigerSpieler().zeichen) {
-                console.log("\tcounter increased (",counter,")");
+            if (spiel.Feld[j][i] === spiel.jetzigerSpieler().zeichen) {                
                 counter++;
+                if (debug) {
+                console.log("\tcounter increased ("+counter+")");
+                }
             } else {
-                console.log("\tcounter reset (",counter,")");
                 counter = 0;
+                if (debug) {
+                console.log("\tcounter reset ("+counter+")");
+                }
             }
             if (counter >= 3) {
-                console.log("gewonnen");
+                console.log("\t", spiel.jetzigerSpieler().zeichen, " Hat gewonnen.")
                 return true
             }
         }
 
     }
     if (debug) {
-        console.log("ende");
+        console.log("Ende");
     }
     return false
 }
